@@ -236,7 +236,7 @@ Buy specified quantity from Buy Array and get items from Get array free.
 | 2. | Profit calculation | Based on the product getting for free, calculating the amount in profit | Implemented |
 | 3. | Repetition Limit | Let's say that there are 4 product from the BUY list and 2 products from the GET list and the offer is buy 2 get 1, but the repetition limit is 1, in this scenario only 1 product must be marked free and the price for the 2nd free product should be in added in the cart amount. |  |
 |4. | Buy met but no Get Amount in the cart | Let's say the offer is Buy 2 Get 1 free, The cart has 2 element from the BUY list but the item from the Get list is not present |   |
-| 5. Cheapest item free | From the GET list the cheapest item is marked as free in the cart | |
+| 5. | Cheapest item free | From the GET list the cheapest item is marked as free in the cart | |
 | 6. | Get item automatically added in the cart | From the pointer 4 the cheapest item from GET list can be automatically added in the cart |  |
 | 7. | Same item from the BUY List | Let's say the offer is BUY 2 GET 1 FREE, and the cart has same 2 product from the BUY List |  |
 
