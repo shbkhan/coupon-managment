@@ -73,6 +73,7 @@ public class CouponBO {
 		mstCouponRepo.save(couponData);
 	}
 
+	@Transactional
 	public void saveCartWiseData(MstCouponApiModel model, MstCouponEntity couponData) {
 		CartWiseCouponApiModel p2 = (CartWiseCouponApiModel) model;
 		BeanUtils.copyProperties(p2, couponData);
@@ -86,6 +87,7 @@ public class CouponBO {
 		log.info("cart wise data has been saved in the db");
 	}
 
+	@Transactional
 	public void saveProductWiseData(MstCouponApiModel model, MstCouponEntity couponData) {
 		ProductWiseCouponApiModel p1 = (ProductWiseCouponApiModel) model;
 		BeanUtils.copyProperties(p1, couponData);
@@ -115,7 +117,6 @@ public class CouponBO {
 //		bxGyCouponRepo.save(bxGyCouponEntity);
 		
 		
-		log.info("here");
 		List<BxGyProductsArrayEntity> bxGy = new ArrayList<>();
 		for(BuyGetProductApiModel bxgy : p3.getBuyProduct()) {
 			BxGyProductsArrayEntity temp = new BxGyProductsArrayEntity();
@@ -124,7 +125,6 @@ public class CouponBO {
 //			bxGyProductsArrayRepo.save(temp);
 			bxGy.add(temp);
 		}
-		log.info("here also");
 		for(BuyGetProductApiModel bxgy : p3.getGetProduct()) {
 			BxGyProductsArrayEntity temp = new BxGyProductsArrayEntity();
 			BeanUtils.copyProperties(bxgy, temp);
@@ -132,7 +132,6 @@ public class CouponBO {
 //			bxGyProductsArrayRepo.save(temp);
 			bxGy.add(temp);
 		}
-		log.info("here also also");
 		log.info("The list is as "+bxGy.toString()+" "+bxGy.size());
 		bxGyProductsArrayRepo.saveAll(bxGy);
 //		bxGyCouponEntity.setBxGyProductsArrayEntity(bxGy);
@@ -213,6 +212,7 @@ public class CouponBO {
 		return false;
 	}
 
+	@Transactional
 	public void updateProductWiseData(MstCouponApiModel model, MstCouponEntity couponData,Long id) {
 		MstCouponEntity existing = mstCouponRepo.findById(id).orElse(new MstCouponEntity());
 
@@ -225,6 +225,7 @@ public class CouponBO {
 		productWiseDetailRepo.save(productEnt);
 	}
 
+	@Transactional
 	public void updateCartWiseData(MstCouponApiModel model, MstCouponEntity couponData,Long id) {
 		MstCouponEntity existing = mstCouponRepo.findById(id).orElse(new MstCouponEntity());
 
@@ -236,6 +237,8 @@ public class CouponBO {
 		cartEnt.setMstCouponEntity(existing);
 		cartWiseDetailRepo.save(cartEnt);
 	}
+	
+	@Transactional
 	public void updateBxGyCoupon(MstCouponApiModel model, MstCouponEntity couponData,Long id) {
 		MstCouponEntity existing = mstCouponRepo.findById(id).orElse(new MstCouponEntity());
 
@@ -253,6 +256,7 @@ public class CouponBO {
 		
 	}
 
+	@Transactional
 	public int deleteById(Long id) {
 		try {
 			mstCouponRepo.deleteById(id);
